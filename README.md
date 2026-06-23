@@ -1,5 +1,5 @@
 # enterprise-ai-operations-assistant
-Architecture pattern for AI-powered enterprise operations using RAG and enterprise knowledge sources.
+Enterprise architecture pattern demonstrating how Generative AI and RAG can accelerate operational support and incident resolution.
 
 # Enterprise AI Operations Assistant
 
