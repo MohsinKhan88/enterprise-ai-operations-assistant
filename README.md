@@ -1,44 +1,191 @@
-# enterprise-ai-operations-assistant
-Enterprise architecture pattern demonstrating how Generative AI and RAG can accelerate operational support and incident resolution.
-
 # Enterprise AI Operations Assistant
 
-## Problem
+AI-powered operational support using Retrieval-Augmented Generation (RAG) and enterprise knowledge sources.
 
-Enterprise knowledge is often scattered across multiple systems:
+---
 
-- Logs
-- Monitoring Tools
-- Runbooks
-- Incident Records
-- Knowledge Articles
+## Overview
 
-Engineers spend significant time searching across systems before identifying the root cause of issues.
+Enterprise knowledge is often distributed across multiple systems, making incident investigation and operational troubleshooting time-consuming and dependent on subject matter experts.
+
+The Enterprise AI Operations Assistant demonstrates how Retrieval-Augmented Generation (RAG) and Generative AI can be used to unify enterprise knowledge and provide actionable operational insights.
+
+The objective is to reduce investigation time, improve knowledge accessibility, and assist support teams in identifying issues more efficiently.
+
+---
+
+## Business Challenge
+
+When production issues occur, engineers typically need to investigate across multiple platforms:
+
+* Application Logs
+* Monitoring & Observability Platforms
+* Runbooks & SOPs
+* Incident Records
+* Knowledge Articles
+* Internal Documentation
+
+A typical investigation involves manually correlating information from multiple systems before identifying the root cause.
+
+### Common Challenges
+
+* Knowledge scattered across multiple systems
+* Manual and time-consuming investigations
+* Heavy dependency on SMEs
+* Inconsistent troubleshooting approaches
+* Increased Mean Time to Resolution (MTTR)
+
+---
+
+## Problem Statement
+
+Operational teams spend significant time searching across multiple systems before identifying the root cause of incidents.
+
+Knowledge is often fragmented across logs, monitoring tools, runbooks, incident records, and documentation repositories, making troubleshooting slow and dependent on subject matter experts.
+
+The following diagram illustrates the challenges faced by operational teams in a fragmented knowledge environment.
+
+![Problem Statement](images/problem-statement.png)
+
+---
 
 ## Solution
 
-An AI-powered Operations Assistant retrieves relevant information from enterprise knowledge sources and provides:
+The Enterprise AI Operations Assistant provides a centralized interface that allows users to ask operational questions using natural language.
 
-- Root Cause Analysis
-- Supporting Evidence
-- Similar Incidents
-- Recommended Actions
+Example:
 
-## Architecture
+> Why is the application responding slowly today?
 
-(Architecture diagram to be added)
+The assistant retrieves relevant information from enterprise knowledge sources, augments the query with contextual information, and generates an evidence-based response.
+
+The response may include:
+
+* Probable Root Cause
+* Supporting Evidence
+* Similar Historical Incidents
+* Recommended Actions
+* Relevant Documentation
+
+---
+
+## Architecture Diagram
+
+The following architecture demonstrates how enterprise knowledge can be collected, processed, indexed, and retrieved using Retrieval-Augmented Generation (RAG).
+
+![Enterprise AI Operations Assistant Architecture](images/enterprise-ai-operations-assistant.png)
+
+---
+
+## How RAG Works
+
+### Step 1 – Knowledge Collection
+
+Operational knowledge is collected from various enterprise sources:
+
+* Logs
+* Monitoring Platforms
+* Runbooks
+* Incident Records
+* Knowledge Articles
+* Internal Documentation
+
+### Step 2 – Data Ingestion
+
+Data is ingested from enterprise repositories, APIs, databases, and document stores.
+
+### Step 3 – Data Processing
+
+Documents are processed through:
+
+* Data Extraction
+* Cleaning and Normalization
+* Chunking
+* Metadata Enrichment
+
+### Step 4 – Embeddings
+
+Each document chunk is converted into a vector representation (embedding) that captures semantic meaning.
+
+### Step 5 – Vector Database
+
+Embeddings are stored in a vector database to enable semantic search and similarity matching.
+
+### Step 6 – Retrieval
+
+When a user submits a question, the system retrieves the most relevant document chunks from the vector database.
+
+### Step 7 – Generation
+
+The retrieved context is combined with the user query and sent to a Large Language Model (LLM).
+
+The model generates a response grounded in enterprise knowledge rather than relying solely on its pre-trained knowledge.
+
+---
+
+## Key Concepts
+
+This architecture is built around the following concepts:
+
+* Retrieval-Augmented Generation (RAG)
+* Embeddings
+* Semantic Search
+* Vector Databases
+* Knowledge Management
+* Generative AI
+
+Together, these capabilities enable AI systems to retrieve relevant enterprise knowledge before generating responses.
+
+---
 
 ## Benefits
 
-- Faster MTTR
-- Reduced SME Dependency
-- Knowledge Reuse
-- Improved Operational Efficiency
+### Faster Incident Resolution
 
-## Future Enhancements
+Reduce Mean Time to Resolution (MTTR) by providing relevant operational knowledge instantly.
 
-- Retrieval Augmented Generation (RAG)
-- Knowledge Base Integration
-- Vector Search
-- Generative AI Integration
-- Enterprise Monitoring Integration
+### Reduced SME Dependency
+
+Enable support teams to troubleshoot issues without relying exclusively on subject matter experts.
+
+### Knowledge Reuse
+
+Capture and reuse institutional knowledge across teams and projects.
+
+### Improved Operational Efficiency
+
+Reduce manual investigation effort and accelerate issue resolution.
+
+### Consistent Support Experience
+
+Provide standardized troubleshooting guidance across teams.
+
+### Scalability
+
+Enable operational knowledge to be leveraged consistently across teams, business units, and geographies.
+
+---
+
+## Potential Enhancements
+
+Future implementations may include:
+
+* Real-time log ingestion
+* Incident correlation
+* Chat-based user interface
+* API integrations
+* Multi-agent workflows
+* Automated remediation recommendations
+* Enterprise search capabilities
+* Cloud-native deployment
+* Knowledge graph integration
+
+---
+
+## Project Status
+
+This repository documents an enterprise architecture pattern for building AI-powered operational assistants using Retrieval-Augmented Generation (RAG).
+
+The current focus is on architecture design, knowledge management patterns, and RAG workflows.
+
+Future iterations may include a working implementation using cloud-native AI services, vector databases, enterprise knowledge repositories, and conversational interfaces.
