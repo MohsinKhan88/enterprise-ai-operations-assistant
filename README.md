@@ -24,17 +24,17 @@ https://main.d2zuwqwp922u1r.amplifyapp.com
 
 ### AWS Implementation
 
-The solution is implemented using the following AWS services:
-
-- AWS Amplify (Frontend Hosting)
-- React (User Interface)
-- Amazon API Gateway
-- AWS Lambda
-- Amazon Bedrock Knowledge Bases
-- Amazon Titan Embeddings
-- Amazon Nova Lite
-- Amazon S3
-- IAM
+| AWS Service | Purpose |
+|-------------|---------|
+| AWS Amplify | Hosts the React web application |
+| React | User interface |
+| Amazon API Gateway | Exposes REST API endpoints |
+| AWS Lambda | Backend orchestration |
+| Amazon Bedrock Knowledge Bases | Managed Retrieval-Augmented Generation (RAG) |
+| Amazon Titan Embeddings | Semantic search and embeddings |
+| Amazon Nova Lite | Generates grounded AI responses |
+| Amazon S3 | Stores enterprise documents |
+| IAM | Identity and access management |
 
 The implementation allows users to ask natural language operational questions and receive grounded responses with source citations from enterprise documentation.
 
