@@ -91,7 +91,7 @@ The solution was first designed as a conceptual Retrieval-Augmented Generation (
 
 The following diagram illustrates the conceptual RAG workflow.
 
-![High-Level Architecture](images/architecture-concept.png)
+![Enterprise AI Operations Assistant Architecture](images/enterprise-ai-operations-assistant.png)
 
 ## AWS Implementation Architecture
 
