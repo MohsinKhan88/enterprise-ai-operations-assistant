@@ -251,3 +251,11 @@ Current capabilities include:
 - Enterprise operational documentation
 
 The project demonstrates how enterprise knowledge can be transformed into an AI-powered operational assistant using managed AWS services.
+---
+## Enterprise Value
+
+This project demonstrates how Generative AI can be integrated into enterprise support environments without requiring model training or fine-tuning.
+
+Using Retrieval-Augmented Generation (RAG), organizations can securely leverage internal documentation to provide grounded, explainable, and consistent responses while reducing investigation time and improving operational efficiency.
+
+The solution showcases a practical implementation of enterprise AI using fully managed AWS services and modern cloud-native architecture.
