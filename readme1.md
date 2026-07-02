@@ -101,6 +101,21 @@ The following diagram shows the AWS services used to implement the solution.
 
 ---
 
+---
+
+# Application
+
+## Home Page
+
+![Home Page](images/home-page.png)
+
+## Sample AI Response
+
+The assistant retrieves relevant enterprise documents and generates grounded responses with references to the retrieved source documents.
+
+![AI Response](images/ai-response.png)
+
+---
 # Enterprise Value
 
 This project demonstrates how enterprise knowledge can be transformed into an AI-powered operational assistant using fully managed AWS services.
