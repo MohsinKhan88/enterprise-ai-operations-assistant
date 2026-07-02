@@ -38,6 +38,7 @@ The solution is implemented using the following AWS services:
 
 The implementation allows users to ask natural language operational questions and receive grounded responses with source citations from enterprise documentation.
 
+---
 
 ## Business Challenge
 
