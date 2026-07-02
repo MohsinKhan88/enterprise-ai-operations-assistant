@@ -100,7 +100,9 @@ Responses include:
 
 ## Architecture Diagram
 
-The following architecture demonstrates how enterprise knowledge can be collected, processed, indexed, and retrieved using Retrieval-Augmented Generation (RAG).
+The following diagram represents the implemented AWS architecture used in this project.
+
+The application is deployed on AWS using a serverless architecture consisting of AWS Amplify, Amazon API Gateway, AWS Lambda, Amazon Bedrock Knowledge Bases, Amazon S3, and Amazon Nova Lite.
 
 ![Enterprise AI Operations Assistant Architecture](images/enterprise-ai-operations-assistant.png)
 
