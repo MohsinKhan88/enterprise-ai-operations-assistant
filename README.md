@@ -36,7 +36,7 @@ https://main.d2zuwqwp922u1r.amplifyapp.com
 | Amazon S3 | Stores enterprise documents |
 | IAM | Identity and access management |
 
-The implementation allows users to ask natural language operational questions and receive grounded responses with source citations from enterprise documentation.
+The implementation allows users to ask natural language operational questions and receive grounded responses with source  document references from enterprise documentation.
 
 ---
 
@@ -94,7 +94,7 @@ Responses include:
 - Probable Root Cause
 - Supporting Evidence
 - Recommended Actions
-- Source Citations
+- Source Document References
 
 ---
 
@@ -118,10 +118,10 @@ The implemented solution follows a serverless architecture.
 2. API Gateway exposes a REST endpoint.
 3. API Gateway invokes AWS Lambda.
 4. Lambda calls Amazon Bedrock Knowledge Bases.
-5. Bedrock performs semantic retrieval using Titan Embeddings.
-6. Relevant document chunks are retrieved from the managed vector store.
+5. Amazon Bedrock Knowledge Bases performs semantic retrieval using Amazon Titan Embeddings.
+6. Relevant document chunks are retrieved from the managed vector store and provided to Amazon Nova Lite.
 7. Amazon Nova Lite generates a grounded response.
-8. Lambda returns the response along with source citations.
+8. Lambda returns the response along with source document references.
 9. The React application displays the response.
 ---
 
@@ -139,9 +139,9 @@ Enterprise operational documentation changes frequently. RAG enables new knowled
 
 AWS Lambda and Amazon API Gateway provide a scalable, low-maintenance architecture while minimizing operational overhead.
 
-### Why Source Citations?
+### Why Source Document References?
 
-Source citations improve trust by allowing users to verify which enterprise documents were used to generate each response.
+Source document references improve trust by allowing users to verify which enterprise documents were used to generate each response.
 
 ---
 ## How RAG Works
@@ -266,9 +266,9 @@ Current capabilities include:
 - Amazon Bedrock Knowledge Bases
 - Amazon Nova Lite
 - Amazon Titan Embeddings
-- Semantic search
+- Semantic document retrieval
 - Retrieval-Augmented Generation (RAG)
-- Source citations
+- Responses with references to enterprise source documents
 - Enterprise operational documentation
 
 The project demonstrates how enterprise knowledge can be transformed into an AI-powered operational assistant using managed AWS services.
