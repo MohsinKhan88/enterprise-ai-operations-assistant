@@ -17,17 +17,18 @@ The objective is to reduce investigation time, improve knowledge accessibility, 
 ## Live Implementation
 
 This project has been implemented as a working cloud-native solution on AWS to demonstrate how Retrieval-Augmented Generation (RAG) can be applied in an enterprise operations environment.
-
+---
 ### Live Demo
 
-https://main.d2zuwqwp922u1r.amplifyapp.com
+A live proof-of-concept demonstrating the Enterprise AI Operations Assistant is available below.
 
+https://main.d2zuwqwp922u1r.amplifyapp.com
+---
 ### AWS Implementation
 
 | AWS Service | Purpose |
 |-------------|---------|
 | AWS Amplify | Hosts the React web application |
-| React | User interface |
 | Amazon API Gateway | Exposes REST API endpoints |
 | AWS Lambda | Backend orchestration |
 | Amazon Bedrock Knowledge Bases | Managed Retrieval-Augmented Generation (RAG) |
@@ -36,7 +37,7 @@ https://main.d2zuwqwp922u1r.amplifyapp.com
 | Amazon S3 | Stores enterprise documents |
 | IAM | Identity and access management |
 
-The implementation allows users to ask natural language operational questions and receive grounded responses with source  document references from enterprise documentation.
+The implementation allows users to ask natural language operational questions and receive grounded responses with source  document references from enterprise documentation.The solution uses a React-based web interface hosted on AWS Amplify.
 
 ---
 
@@ -94,7 +95,7 @@ Responses include:
 - Probable Root Cause
 - Supporting Evidence
 - Recommended Actions
-- Source Document References
+- References to Source Documents
 
 ---
 
@@ -253,7 +254,7 @@ Potential future enhancements include:
 ## Project Status
 
 Version: 1.0.0
-Status: Production-ready Proof of Concept
+Status: Enterprise Proof of Concept
 
 This project has been fully implemented as a working proof of concept on AWS.
 
@@ -285,7 +286,6 @@ Current limitations include:
 - Manual document synchronization
 - No user authentication
 - No persistent chat history
-
 ---
 ## Enterprise Value
 
@@ -294,7 +294,28 @@ This project demonstrates how Generative AI can be integrated into enterprise su
 Using Retrieval-Augmented Generation (RAG), organizations can securely leverage internal documentation to provide grounded, explainable, and consistent responses while reducing investigation time and improving operational efficiency.
 
 The solution showcases a practical implementation of enterprise AI using fully managed AWS services and modern cloud-native architecture.
+---
+## Key Takeaways
 
+This project demonstrates how managed AWS AI services can be combined to build a practical enterprise knowledge assistant without training or fine-tuning a custom Large Language Model.
+
+The implementation showcases how Retrieval-Augmented Generation (RAG), semantic search, and cloud-native serverless architecture can be used to improve operational support while keeping enterprise knowledge grounded in trusted documentation.
+---
+
+## Skills Demonstrated
+
+- AWS Solution Architecture
+- Amazon Bedrock
+- Retrieval-Augmented Generation (RAG)
+- Amazon Bedrock Knowledge Bases
+- Amazon Titan Embeddings
+- Large Language Models (LLMs)
+- Semantic Search
+- Serverless Architecture
+- API Design
+- Enterprise AI Solution Design
+- Knowledge Management
+- Cloud-native Application Development
 ---
 ## License
 
