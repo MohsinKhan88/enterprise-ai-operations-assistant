@@ -14,6 +14,31 @@ The objective is to reduce investigation time, improve knowledge accessibility, 
 
 ---
 
+## Live Implementation
+
+This project has been implemented as a working cloud-native solution on AWS to demonstrate how Retrieval-Augmented Generation (RAG) can be applied in an enterprise operations environment.
+
+### Live Demo
+
+https://main.d2zuwqwp922u1r.amplifyapp.com
+
+### AWS Implementation
+
+The solution is implemented using the following AWS services:
+
+- AWS Amplify (Frontend Hosting)
+- React (User Interface)
+- Amazon API Gateway
+- AWS Lambda
+- Amazon Bedrock Knowledge Bases
+- Amazon Titan Embeddings
+- Amazon Nova Lite
+- Amazon S3
+- IAM
+
+The implementation allows users to ask natural language operational questions and receive grounded responses with source citations from enterprise documentation.
+
+
 ## Business Challenge
 
 When production issues occur, engineers typically need to investigate across multiple platforms:
