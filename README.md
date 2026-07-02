@@ -85,7 +85,7 @@ Example:
 
 > Why is the application responding slowly today?
 
-The application retrieves relevant enterprise documents from Amazon Bedrock Knowledge Bases using semantic search powered by Amazon Titan Embeddings.
+The application retrieves relevant enterprise documents using the managed retrieval capabilities provided by Amazon Bedrock Knowledge Bases, powered by semantic search using Amazon Titan Embeddings.
 
 Amazon Nova Lite then generates a grounded response using the retrieved enterprise knowledge.
 
@@ -123,6 +123,26 @@ The implemented solution follows a serverless architecture.
 7. Amazon Nova Lite generates a grounded response.
 8. Lambda returns the response along with source citations.
 9. The React application displays the response.
+---
+
+## Architecture Decisions
+
+### Why Amazon Bedrock Knowledge Bases?
+
+A fully managed Retrieval-Augmented Generation (RAG) capability was selected to avoid building and maintaining a custom embedding and vector search pipeline.
+
+### Why Retrieval-Augmented Generation (RAG)?
+
+Enterprise operational documentation changes frequently. RAG enables new knowledge to be incorporated without retraining foundation models.
+
+### Why Serverless?
+
+AWS Lambda and Amazon API Gateway provide a scalable, low-maintenance architecture while minimizing operational overhead.
+
+### Why Source Citations?
+
+Source citations improve trust by allowing users to verify which enterprise documents were used to generate each response.
+
 ---
 ## How RAG Works
 
@@ -232,7 +252,8 @@ Potential future enhancements include:
 
 ## Project Status
 
-Current Version: v1.0
+Version: 1.0.0
+Status: Production-ready Proof of Concept
 
 This project has been fully implemented as a working proof of concept on AWS.
 
@@ -252,6 +273,20 @@ Current capabilities include:
 
 The project demonstrates how enterprise knowledge can be transformed into an AI-powered operational assistant using managed AWS services.
 ---
+
+## Current Limitations
+
+This implementation is intended as a proof of concept.
+
+Current limitations include:
+
+- Single-turn conversations (no conversation memory)
+- Static knowledge base documents
+- Manual document synchronization
+- No user authentication
+- No persistent chat history
+
+---
 ## Enterprise Value
 
 This project demonstrates how Generative AI can be integrated into enterprise support environments without requiring model training or fine-tuning.
@@ -259,3 +294,8 @@ This project demonstrates how Generative AI can be integrated into enterprise su
 Using Retrieval-Augmented Generation (RAG), organizations can securely leverage internal documentation to provide grounded, explainable, and consistent responses while reducing investigation time and improving operational efficiency.
 
 The solution showcases a practical implementation of enterprise AI using fully managed AWS services and modern cloud-native architecture.
+
+---
+## License
+
+This project is provided for educational and portfolio purposes.
