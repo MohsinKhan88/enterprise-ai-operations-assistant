@@ -1,4 +1,4 @@
-# Enterprise AI Operations Assistant
+# Enterprise AI Operations Assistant on AWS
 
 AI-powered operational support using Retrieval-Augmented Generation (RAG) and enterprise knowledge sources.
 
