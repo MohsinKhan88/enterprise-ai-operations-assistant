@@ -77,21 +77,24 @@ The following diagram illustrates the challenges faced by operational teams in a
 
 ## Solution
 
-The Enterprise AI Operations Assistant provides a centralized interface that allows users to ask operational questions using natural language.
+The Enterprise AI Operations Assistant has been implemented as a cloud-native web application hosted on AWS.
+
+Users can ask operational questions using natural language through a React-based web interface.
 
 Example:
 
 > Why is the application responding slowly today?
 
-The assistant retrieves relevant information from enterprise knowledge sources, augments the query with contextual information, and generates an evidence-based response.
+The application retrieves relevant enterprise documents from Amazon Bedrock Knowledge Bases using semantic search powered by Amazon Titan Embeddings.
 
-The response may include:
+Amazon Nova Lite then generates a grounded response using the retrieved enterprise knowledge.
 
-* Probable Root Cause
-* Supporting Evidence
-* Similar Historical Incidents
-* Recommended Actions
-* Relevant Documentation
+Responses include:
+
+- Probable Root Cause
+- Supporting Evidence
+- Recommended Actions
+- Source Citations
 
 ---
 
