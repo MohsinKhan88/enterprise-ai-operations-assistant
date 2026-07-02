@@ -108,6 +108,22 @@ The application is deployed on AWS using a serverless architecture consisting of
 
 ---
 
+## AWS Architecture
+
+The implemented solution follows a serverless architecture.
+
+### Request Flow
+
+1. User submits a question through the React application hosted on AWS Amplify.
+2. API Gateway exposes a REST endpoint.
+3. API Gateway invokes AWS Lambda.
+4. Lambda calls Amazon Bedrock Knowledge Bases.
+5. Bedrock performs semantic retrieval using Titan Embeddings.
+6. Relevant document chunks are retrieved from the managed vector store.
+7. Amazon Nova Lite generates a grounded response.
+8. Lambda returns the response along with source citations.
+9. The React application displays the response.
+---
 ## How RAG Works
 
 ### Step 1 – Knowledge Collection
