@@ -1,94 +1,90 @@
 # Enterprise AI Operations Assistant on AWS
 
-AI-powered operational support using Retrieval-Augmented Generation (RAG) and enterprise knowledge sources.
+AI-powered operational support using Retrieval-Augmented Generation (RAG) and Amazon Bedrock to transform enterprise documentation into an intelligent knowledge assistant.
 
 ---
 
-## Overview
+# Overview
 
-Enterprise knowledge is often distributed across multiple systems, making incident investigation and operational troubleshooting time-consuming and dependent on subject matter experts.
+Enterprise support teams often spend significant time searching across runbooks, incident records, operational documentation, and knowledge repositories before identifying the root cause of an issue.
 
-The Enterprise AI Operations Assistant demonstrates how Retrieval-Augmented Generation (RAG) and Generative AI can be used to unify enterprise knowledge and provide actionable operational insights.
+The Enterprise AI Operations Assistant demonstrates how Generative AI and Retrieval-Augmented Generation (RAG) can be used to provide grounded, explainable answers using trusted enterprise knowledge.
 
-The objective is to reduce investigation time, improve knowledge accessibility, and assist support teams in identifying issues more efficiently.
+The solution showcases how managed AWS AI services can be combined to build a cloud-native enterprise knowledge assistant without training or fine-tuning a custom Large Language Model.
 
 ---
 
-## Live Implementation
+# Live Demo
 
-This project has been implemented as a working cloud-native solution on AWS to demonstrate how Retrieval-Augmented Generation (RAG) can be applied in an enterprise operations environment.
----
-### Live Demo
+A working proof of concept is available below.
 
-A live proof-of-concept demonstrating the Enterprise AI Operations Assistant is available below.
+**Application**
 
 https://main.d2zuwqwp922u1r.amplifyapp.com
----
-### AWS Implementation
 
-| AWS Service | Purpose |
-|-------------|---------|
+---
+
+# AWS Implementation
+
+| Service | Purpose |
+|----------|---------|
 | AWS Amplify | Hosts the React web application |
 | Amazon API Gateway | Exposes REST API endpoints |
-| AWS Lambda | Backend orchestration |
+| AWS Lambda | Serverless backend orchestration |
 | Amazon Bedrock Knowledge Bases | Managed Retrieval-Augmented Generation (RAG) |
-| Amazon Titan Embeddings | Semantic search and embeddings |
+| Amazon Titan Embeddings | Semantic document search |
 | Amazon Nova Lite | Generates grounded AI responses |
-| Amazon S3 | Stores enterprise documents |
+| Amazon S3 | Stores enterprise documentation |
 | IAM | Identity and access management |
 
-The implementation allows users to ask natural language operational questions and receive grounded responses with source  document references from enterprise documentation.The solution uses a React-based web interface hosted on AWS Amplify.
+Users can ask operational questions in natural language and receive AI-generated responses grounded in enterprise documentation, including references to the source documents used during retrieval.
 
 ---
 
-## Business Challenge
+# Business Challenge
 
-When production issues occur, engineers typically need to investigate across multiple platforms:
+Production support engineers often investigate issues across multiple disconnected systems before identifying the root cause.
 
-* Application Logs
-* Monitoring & Observability Platforms
-* Runbooks & SOPs
-* Incident Records
-* Knowledge Articles
-* Internal Documentation
+Typical information sources include:
 
-A typical investigation involves manually correlating information from multiple systems before identifying the root cause.
+- Application Logs
+- Monitoring Platforms
+- Runbooks
+- Incident Records
+- Knowledge Articles
+- Internal Documentation
 
-### Common Challenges
+This fragmented approach results in:
 
-* Knowledge scattered across multiple systems
-* Manual and time-consuming investigations
-* Heavy dependency on SMEs
-* Inconsistent troubleshooting approaches
-* Increased Mean Time to Resolution (MTTR)
+- Increased Mean Time to Resolution (MTTR)
+- Heavy dependency on Subject Matter Experts (SMEs)
+- Manual knowledge discovery
+- Inconsistent troubleshooting approaches
+- Reduced operational efficiency
 
 ---
 
-## Problem Statement
+# Problem Statement
 
-Operational teams spend significant time searching across multiple systems before identifying the root cause of incidents.
+Operational knowledge is often fragmented across multiple enterprise systems, making troubleshooting slow and dependent on individual expertise.
 
-Knowledge is often fragmented across logs, monitoring tools, runbooks, incident records, and documentation repositories, making troubleshooting slow and dependent on subject matter experts.
-
-The following diagram illustrates the challenges faced by operational teams in a fragmented knowledge environment.
+The following diagram illustrates this challenge.
 
 ![Problem Statement](images/problem-statement.png)
 
 ---
 
-## Solution
+# Solution
 
-The Enterprise AI Operations Assistant has been implemented as a cloud-native web application hosted on AWS.
-
-Users can ask operational questions using natural language through a React-based web interface.
+The Enterprise AI Operations Assistant provides a centralized conversational interface that allows users to ask operational questions using natural language.
 
 Example:
 
 > Why is the application responding slowly today?
 
-The application retrieves relevant enterprise documents using the managed retrieval capabilities provided by Amazon Bedrock Knowledge Bases, powered by semantic search using Amazon Titan Embeddings.
+Amazon Bedrock Knowledge Bases retrieves the most relevant enterprise documentation using semantic search powered by Amazon Titan Embeddings.
 
-Amazon Nova Lite then generates a grounded response using the retrieved enterprise knowledge.
+Amazon Nova Lite then generates a grounded response based on the retrieved enterprise context rather than relying solely on its pre-trained knowledge.
 
 Responses include:
 
@@ -99,144 +95,90 @@ Responses include:
 
 ---
 
-## Architecture Diagram
+# Solution Architecture
 
-The following diagram represents the implemented AWS architecture used in this project.
-
-The application is deployed on AWS using a serverless architecture consisting of AWS Amplify, Amazon API Gateway, AWS Lambda, Amazon Bedrock Knowledge Bases, Amazon S3, and Amazon Nova Lite.
+The application is implemented using a fully managed serverless architecture on AWS.
 
 ![Enterprise AI Operations Assistant Architecture](images/enterprise-ai-operations-assistant.png)
 
----
-
-## AWS Architecture
-
-The implemented solution follows a serverless architecture.
-
-### Request Flow
+## Request Flow
 
 1. User submits a question through the React application hosted on AWS Amplify.
-2. API Gateway exposes a REST endpoint.
+2. Amazon API Gateway receives the request.
 3. API Gateway invokes AWS Lambda.
 4. Lambda calls Amazon Bedrock Knowledge Bases.
-5. Amazon Bedrock Knowledge Bases performs semantic retrieval using Amazon Titan Embeddings.
-6. Relevant document chunks are retrieved from the managed vector store and provided to Amazon Nova Lite.
+5. Bedrock performs semantic retrieval using Amazon Titan Embeddings.
+6. Relevant document chunks are retrieved from the managed vector store.
 7. Amazon Nova Lite generates a grounded response.
-8. Lambda returns the response along with source document references.
-9. The React application displays the response.
----
-
-## Architecture Decisions
-
-### Why Amazon Bedrock Knowledge Bases?
-
-A fully managed Retrieval-Augmented Generation (RAG) capability was selected to avoid building and maintaining a custom embedding and vector search pipeline.
-
-### Why Retrieval-Augmented Generation (RAG)?
-
-Enterprise operational documentation changes frequently. RAG enables new knowledge to be incorporated without retraining foundation models.
-
-### Why Serverless?
-
-AWS Lambda and Amazon API Gateway provide a scalable, low-maintenance architecture while minimizing operational overhead.
-
-### Why Source Document References?
-
-Source document references improve trust by allowing users to verify which enterprise documents were used to generate each response.
-
----
-## How RAG Works
-
-### Step 1 – Knowledge Collection
-
-Operational knowledge is collected from various enterprise sources:
-
-* Logs
-* Monitoring Platforms
-* Runbooks
-* Incident Records
-* Knowledge Articles
-* Internal Documentation
-
-### Step 2 – Data Ingestion
-
-Data is ingested from enterprise repositories, APIs, databases, and document stores.
-
-### Step 3 – Data Processing
-
-Documents are processed through:
-
-* Data Extraction
-* Cleaning and Normalization
-* Chunking
-* Metadata Enrichment
-
-### Step 4 – Embeddings
-
-Each document chunk is converted into a vector representation (embedding) that captures semantic meaning.
-
-### Step 5 – Vector Database
-
-Embeddings are stored in a vector database to enable semantic search and similarity matching.
-
-### Step 6 – Retrieval
-
-When a user submits a question, the system retrieves the most relevant document chunks from the vector database.
-
-### Step 7 – Generation
-
-The retrieved context is combined with the user query and sent to a Large Language Model (LLM).
-
-The model generates a response grounded in enterprise knowledge rather than relying solely on its pre-trained knowledge.
+8. Lambda returns the response together with references to the source documents.
+9. The React application displays the final response.
 
 ---
 
-## Key Concepts
+# Why This Architecture?
 
-This architecture is built around the following concepts:
+### Amazon Bedrock Knowledge Bases
 
-* Retrieval-Augmented Generation (RAG)
-* Embeddings
-* Semantic Search
-* Vector Databases
-* Knowledge Management
-* Generative AI
+Provides a fully managed Retrieval-Augmented Generation (RAG) capability without requiring a custom vector database or retrieval pipeline.
 
-Together, these capabilities enable AI systems to retrieve relevant enterprise knowledge before generating responses.
+### Retrieval-Augmented Generation (RAG)
 
----
+Enterprise documentation changes frequently. RAG enables new knowledge to be incorporated without retraining the foundation model.
 
-## Benefits
+### Serverless Architecture
 
-### Faster Incident Resolution
+AWS Lambda and Amazon API Gateway minimize operational overhead while providing automatic scalability.
 
-Reduce Mean Time to Resolution (MTTR) by providing relevant operational knowledge instantly.
+### Source Document References
 
-### Reduced SME Dependency
-
-Enable support teams to troubleshoot issues without relying exclusively on subject matter experts.
-
-### Knowledge Reuse
-
-Capture and reuse institutional knowledge across teams and projects.
-
-### Improved Operational Efficiency
-
-Reduce manual investigation effort and accelerate issue resolution.
-
-### Consistent Support Experience
-
-Provide standardized troubleshooting guidance across teams.
-
-### Scalability
-
-Enable operational knowledge to be leveraged consistently across teams, business units, and geographies.
+Displaying the retrieved source documents increases transparency and allows users to verify the origin of AI-generated responses.
 
 ---
 
-## Potential Enhancements
+# How RAG Works
 
-Potential future enhancements include:
+The solution follows a standard Retrieval-Augmented Generation workflow.
+
+```
+Enterprise Documents
+        ↓
+Document Processing
+        ↓
+Chunking & Metadata
+        ↓
+Titan Embeddings
+        ↓
+Bedrock Knowledge Base
+        ↓
+Semantic Retrieval
+        ↓
+Nova Lite
+        ↓
+Grounded AI Response
+```
+
+The retrieved enterprise context is combined with the user's question before being sent to the foundation model, ensuring responses remain grounded in trusted organizational knowledge.
+
+---
+
+# Enterprise Value
+
+This solution demonstrates how enterprise knowledge can be transformed into an AI-powered operational assistant using fully managed AWS services.
+
+Business benefits include:
+
+- Reduced Mean Time to Resolution (MTTR)
+- Reduced dependency on Subject Matter Experts
+- Faster knowledge discovery
+- Improved operational efficiency
+- Consistent troubleshooting guidance
+- Scalable enterprise knowledge management
+
+---
+
+# Future Enhancements
+
+Possible future enhancements include:
 
 - Conversation memory
 - Amazon Cognito authentication
@@ -247,76 +189,26 @@ Potential future enhancements include:
 - Feedback collection
 - CloudWatch monitoring
 - Cost analytics
-- Agentic workflows using Amazon Bedrock Agents
+- Amazon Bedrock Agents
 
 ---
 
-## Project Status
-
-Version: 1.0.0
-Status: Enterprise Proof of Concept
-
-This project has been fully implemented as a working proof of concept on AWS.
-
-Current capabilities include:
-
-- Live web application hosted on AWS Amplify
-- React-based conversational interface
-- Amazon API Gateway REST API
-- AWS Lambda orchestration
-- Amazon Bedrock Knowledge Bases
-- Amazon Nova Lite
-- Amazon Titan Embeddings
-- Semantic document retrieval
-- Retrieval-Augmented Generation (RAG)
-- Responses with references to enterprise source documents
-- Enterprise operational documentation
-
-The project demonstrates how enterprise knowledge can be transformed into an AI-powered operational assistant using managed AWS services.
----
-
-## Current Limitations
-
-This implementation is intended as a proof of concept.
-
-Current limitations include:
-
-- Single-turn conversations (no conversation memory)
-- Static knowledge base documents
-- Manual document synchronization
-- No user authentication
-- No persistent chat history
----
-## Enterprise Value
-
-This project demonstrates how Generative AI can be integrated into enterprise support environments without requiring model training or fine-tuning.
-
-Using Retrieval-Augmented Generation (RAG), organizations can securely leverage internal documentation to provide grounded, explainable, and consistent responses while reducing investigation time and improving operational efficiency.
-
-The solution showcases a practical implementation of enterprise AI using fully managed AWS services and modern cloud-native architecture.
----
-## Key Takeaways
-
-This project demonstrates how managed AWS AI services can be combined to build a practical enterprise knowledge assistant without training or fine-tuning a custom Large Language Model.
-
-The implementation showcases how Retrieval-Augmented Generation (RAG), semantic search, and cloud-native serverless architecture can be used to improve operational support while keeping enterprise knowledge grounded in trusted documentation.
----
-
-## Skills Demonstrated
+# Skills Demonstrated
 
 - AWS Solution Architecture
 - Amazon Bedrock
-- Retrieval-Augmented Generation (RAG)
 - Amazon Bedrock Knowledge Bases
 - Amazon Titan Embeddings
-- Large Language Models (LLMs)
+- Retrieval-Augmented Generation (RAG)
 - Semantic Search
+- Large Language Models (LLMs)
 - Serverless Architecture
 - API Design
 - Enterprise AI Solution Design
 - Knowledge Management
-- Cloud-native Application Development
+
 ---
-## License
+
+# License
 
 This project is provided for educational and portfolio purposes.
