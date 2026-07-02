@@ -10,7 +10,7 @@ Enterprise support teams often spend significant time searching across runbooks,
 
 The Enterprise AI Operations Assistant demonstrates how Generative AI and Retrieval-Augmented Generation (RAG) can be used to provide grounded, explainable answers using trusted enterprise knowledge.
 
-The solution showcases how managed AWS AI services can be combined to build a cloud-native enterprise knowledge assistant without training or fine-tuning a custom Large Language Model.
+Built entirely on managed AWS services, the solution showcases how enterprise knowledge can be transformed into an intelligent operational assistant without training or fine-tuning a custom Large Language Model.
 
 ---
 
@@ -43,7 +43,7 @@ Users can ask operational questions in natural language and receive AI-generated
 
 # Business Challenge
 
-Production support engineers often investigate issues by searching across multiple disconnected systems including:
+Production support engineers often investigate issues by searching across multiple disconnected systems, including:
 
 - Application Logs
 - Monitoring Platforms
@@ -58,13 +58,13 @@ The Enterprise AI Operations Assistant addresses this challenge by providing a s
 
 The following diagram illustrates the enterprise knowledge fragmentation problem.
 
-![Problem Statement](images/problem-statement.png)
+![Business Challenge](images/problem-statement.png)
 
 ---
 
 # Solution
 
-The Enterprise AI Operations Assistant provides a centralized conversational interface that allows users to ask operational questions using natural language.
+The Enterprise AI Operations Assistant provides a centralized conversational interface that enables users to ask operational questions using natural language.
 
 Example:
 
@@ -72,7 +72,7 @@ Example:
 
 Amazon Bedrock Knowledge Bases retrieves the most relevant enterprise documentation using semantic search powered by Amazon Titan Embeddings.
 
-Amazon Nova Lite generates a grounded response using the retrieved enterprise context rather than relying solely on its pre-trained knowledge.
+Amazon Nova Lite generates responses using the retrieved enterprise context, ensuring answers are grounded in trusted documentation rather than relying solely on the model's pre-trained knowledge.
 
 Responses include:
 
@@ -85,19 +85,19 @@ Responses include:
 
 # Solution Architecture
 
-The solution was first designed as a conceptual Retrieval-Augmented Generation (RAG) architecture and then implemented using fully managed AWS services.
+The solution was first designed as a conceptual Retrieval-Augmented Generation (RAG) workflow and then implemented using fully managed AWS services.
 
-## High-Level RAG Architecture
+## Conceptual RAG Architecture
 
 The following diagram illustrates the conceptual RAG workflow.
 
-![Enterprise AI Operations Assistant Architecture](images/enterprise-ai-operations-assistant.png)
+![Conceptual RAG Architecture](images/enterprise-ai-operations-assistant.png)
 
 ## AWS Implementation Architecture
 
-The following diagram shows the AWS services used to implement the solution.
+The following diagram shows how the solution is implemented using AWS managed services.
 
-![AWS Implementation](images/architecture-aws-implementation.png)
+![AWS Implementation Architecture](images/architecture-aws-implementation.png)
 
 ---
 
@@ -114,14 +114,15 @@ The assistant retrieves relevant enterprise documents and generates grounded res
 ![AI Response](images/ai-response.png)
 
 ---
+
 # Enterprise Value
 
-This project demonstrates how enterprise knowledge can be transformed into an AI-powered operational assistant using fully managed AWS services.
+This project demonstrates how Retrieval-Augmented Generation (RAG) and managed AWS AI services can be applied to enterprise operational support.
 
-Business benefits include:
+Key business outcomes include:
 
 - Reduced Mean Time to Resolution (MTTR)
-- Reduced dependency on Subject Matter Experts
+- Reduced dependency on Subject Matter Experts (SMEs)
 - Faster knowledge discovery
 - Improved operational efficiency
 - Consistent troubleshooting guidance
@@ -129,24 +130,7 @@ Business benefits include:
 
 ---
 
-# Future Enhancements
-
-Possible future enhancements include:
-
-- Conversation memory
-- Amazon Cognito authentication
-- Chat history
-- Real-time document synchronization
-- Multiple Knowledge Bases
-- Streaming responses
-- Feedback collection
-- CloudWatch monitoring
-- Cost analytics
-- Amazon Bedrock Agents
-
----
-
-# Technologies & Concepts
+# Technologies
 
 ## AWS Services
 
@@ -164,8 +148,8 @@ Possible future enhancements include:
 
 - Retrieval-Augmented Generation (RAG)
 - Semantic Search
+- Large Language Models (LLMs)
 - Embedding Models
-- Foundation Models
 - Serverless Architecture
 - Enterprise AI Solution Design
 - Knowledge Management
