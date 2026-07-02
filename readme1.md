@@ -101,8 +101,6 @@ The following diagram shows the AWS services used to implement the solution.
 
 ---
 
----
-
 # Application
 
 ## Home Page
