@@ -156,6 +156,14 @@ Key business outcomes include:
 
 ---
 
+## Future Enhancement
+
+- AI-assisted log analysis using Amazon CloudWatch Logs
+- Natural language querying of API errors, audit logs, and monitoring events
+- Log summarization using Amazon Bedrock
+
+---
+
 # License
 
 This project is provided for educational and portfolio purposes.
