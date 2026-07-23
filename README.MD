@@ -1,6 +1,6 @@
 # Enterprise AI Operations Assistant on AWS
 
-AI-powered operational support using Retrieval-Augmented Generation (RAG) and Amazon Bedrock to transform enterprise documentation into an intelligent knowledge assistant.
+AI-powered operational support using Retrieval-Augmented Generation (RAG), Amazon Bedrock, and Amazon CloudWatch to provide intelligent access to enterprise knowledge and operational logs.
 
 ---
 
@@ -30,14 +30,16 @@ https://main.d2zuwqwp922u1r.amplifyapp.com
 |----------|---------|
 | AWS Amplify | Hosts the React web application |
 | Amazon API Gateway | Exposes REST API endpoints |
-| AWS Lambda | Serverless backend orchestration |
+| AWS Lambda | Backend orchestration and request routing |
 | Amazon Bedrock Knowledge Bases | Managed Retrieval-Augmented Generation (RAG) |
 | Amazon Titan Embeddings | Semantic document search |
 | Amazon Nova Lite | Generates grounded AI responses |
 | Amazon S3 | Stores enterprise documentation |
 | IAM | Identity and access management |
+| Amazon CloudWatch Logs | Stores application and Lambda operational logs |
+| Amazon CloudWatch Logs Insights | Queries and filters recent operational errors |
 
-Users can ask operational questions in natural language and receive AI-generated responses grounded in enterprise documentation, including references to the retrieved source documents.
+The assistant supports enterprise knowledge queries using Amazon Bedrock Knowledge Bases and operational log queries using Amazon CloudWatch Logs Insights, providing a single conversational interface for both enterprise knowledge and recent operational information.
 
 ---
 
@@ -81,6 +83,13 @@ Responses include:
 - Recommended Actions
 - References to Retrieved Source Documents
 
+The assistant also provides access to recent operational logs.
+
+Users can ask questions such as:
+
+> Show recent Lambda errors
+
+AWS Lambda identifies operational log requests and queries Amazon CloudWatch Logs Insights to retrieve recent error-related entries. The results are presented directly through the conversational interface as an operational log summary.
 ---
 
 # Solution Architecture
@@ -113,6 +122,18 @@ The assistant retrieves relevant enterprise documents and generates grounded res
 
 ![AI Response](images/ai-response.png)
 
+
+## Operational Log Monitoring
+
+Version 1.1 introduces integration with Amazon CloudWatch Logs.
+
+Users can request recent AWS Lambda errors directly through the conversational interface.
+
+Example:
+
+> Show recent Lambda errors
+
+The application queries Amazon CloudWatch Logs Insights and presents matching error-related entries as an operational log summary.
 ---
 
 # Enterprise Value
@@ -158,9 +179,12 @@ Key business outcomes include:
 
 ## Future Enhancement
 
-- AI-assisted log analysis using Amazon CloudWatch Logs
-- Natural language querying of API errors, audit logs, and monitoring events
-- Log summarization using Amazon Bedrock
+- AI-powered summarization and root cause analysis of operational logs
+- Support for multiple CloudWatch log groups
+- API Gateway, application, and audit log analysis
+- Correlation between operational logs and enterprise knowledge
+- Conversation memory and chat history
+- Automated remediation recommendations
 
 ---
 
