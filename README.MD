@@ -164,6 +164,7 @@ Key business outcomes include:
 - Amazon Nova Lite
 - Amazon S3
 - IAM
+- Amazon CloudWatch Logs/Insights
 
 ## AI & Architecture
 
@@ -177,7 +178,7 @@ Key business outcomes include:
 
 ---
 
-## Future Enhancement
+## Future Enhancements
 
 - AI-powered summarization and root cause analysis of operational logs
 - Support for multiple CloudWatch log groups
