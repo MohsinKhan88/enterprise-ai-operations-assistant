@@ -127,10 +127,7 @@ The assistant retrieves relevant enterprise documents and generates grounded res
 
 ![AI Response](images/ai-response.png)
 
-
 ## Operational Log Monitoring
-
-Version 1.1 introduces integration with Amazon CloudWatch Logs.
 
 Users can request recent AWS Lambda errors directly through the conversational interface.
 
@@ -139,6 +136,8 @@ Example:
 > Show recent Lambda errors
 
 The application queries Amazon CloudWatch Logs Insights and presents matching error-related entries as an operational log summary.
+
+![Operational Log Monitoring](images/operational-log-monitoring.png)
 ---
 
 # Enterprise Value
