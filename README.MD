@@ -66,30 +66,35 @@ The following diagram illustrates the enterprise knowledge fragmentation problem
 
 # Solution
 
-The Enterprise AI Operations Assistant provides a centralized conversational interface that enables users to ask operational questions using natural language.
+The Enterprise AI Operations Assistant provides a centralized conversational interface that enables users to access both enterprise knowledge and operational logs using natural language.
 
-Example:
+## Enterprise Knowledge Assistant
 
-> Why is the application responding slowly today?
+Users can ask operational questions such as:
 
-Amazon Bedrock Knowledge Bases retrieves the most relevant enterprise documentation using semantic search powered by Amazon Titan Embeddings.
+> What is the P1 incident process?
 
-Amazon Nova Lite generates responses using the retrieved enterprise context, ensuring answers are grounded in trusted documentation rather than relying solely on the model's pre-trained knowledge.
+Amazon Bedrock Knowledge Bases retrieves relevant enterprise documentation using semantic search powered by Amazon Titan Embeddings. Amazon Nova Lite then generates a grounded response using the retrieved enterprise context.
 
-Responses include:
+Responses may include:
 
 - Probable Root Cause
 - Supporting Evidence
 - Recommended Actions
 - References to Retrieved Source Documents
 
-The assistant also provides access to recent operational logs.
+## Operational Log Monitoring
 
-Users can ask questions such as:
+Users can also query recent operational errors directly through the same conversational interface.
 
-> Show recent Lambda errors.
+Example:
 
-AWS Lambda identifies operational log requests and queries Amazon CloudWatch Logs Insights to retrieve recent error-related entries. The results are presented directly through the conversational interface as an operational log summary.
+> Show recent Lambda errors
+
+AWS Lambda identifies the request as a log-related query and uses Amazon CloudWatch Logs Insights to retrieve recent error-related entries. The results are formatted and presented as an operational log summary.
+
+This enables users to access both enterprise knowledge and recent operational information through a single interface.
+
 ---
 
 # Solution Architecture
