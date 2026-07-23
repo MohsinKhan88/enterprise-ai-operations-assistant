@@ -1,6 +1,6 @@
 # Enterprise AI Operations Assistant on AWS
 
-AI-powered operational support using Retrieval-Augmented Generation (RAG) and Amazon Bedrock to transform enterprise documentation into an intelligent knowledge assistant.
+AI-powered operational support using Retrieval-Augmented Generation (RAG), Amazon Bedrock, and Amazon CloudWatch to provide intelligent access to enterprise knowledge and operational logs.
 
 ---
 
@@ -30,14 +30,16 @@ https://main.d2zuwqwp922u1r.amplifyapp.com
 |----------|---------|
 | AWS Amplify | Hosts the React web application |
 | Amazon API Gateway | Exposes REST API endpoints |
-| AWS Lambda | Serverless backend orchestration |
+| AWS Lambda | Backend orchestration and request routing |
 | Amazon Bedrock Knowledge Bases | Managed Retrieval-Augmented Generation (RAG) |
 | Amazon Titan Embeddings | Semantic document search |
 | Amazon Nova Lite | Generates grounded AI responses |
 | Amazon S3 | Stores enterprise documentation |
 | IAM | Identity and access management |
+| Amazon CloudWatch Logs | Stores application and Lambda operational logs |
+| Amazon CloudWatch Logs Insights | Queries and filters recent operational errors |
 
-Users can ask operational questions in natural language and receive AI-generated responses grounded in enterprise documentation, including references to the retrieved source documents.
+The assistant supports enterprise knowledge queries using Amazon Bedrock Knowledge Bases and operational log queries using Amazon CloudWatch Logs Insights, providing a single conversational interface for both enterprise knowledge and recent operational information.
 
 ---
 
@@ -64,22 +66,34 @@ The following diagram illustrates the enterprise knowledge fragmentation problem
 
 # Solution
 
-The Enterprise AI Operations Assistant provides a centralized conversational interface that enables users to ask operational questions using natural language.
+The Enterprise AI Operations Assistant provides a centralized conversational interface that enables users to access both enterprise knowledge and operational logs using natural language.
 
-Example:
+## Enterprise Knowledge Assistant
 
-> Why is the application responding slowly today?
+Users can ask operational questions such as:
 
-Amazon Bedrock Knowledge Bases retrieves the most relevant enterprise documentation using semantic search powered by Amazon Titan Embeddings.
+> What is the P1 incident process?
 
-Amazon Nova Lite generates responses using the retrieved enterprise context, ensuring answers are grounded in trusted documentation rather than relying solely on the model's pre-trained knowledge.
+Amazon Bedrock Knowledge Bases retrieves relevant enterprise documentation using semantic search powered by Amazon Titan Embeddings. Amazon Nova Lite then generates a grounded response using the retrieved enterprise context.
 
-Responses include:
+Responses may include:
 
 - Probable Root Cause
 - Supporting Evidence
 - Recommended Actions
 - References to Retrieved Source Documents
+
+## Operational Log Monitoring
+
+Users can also query recent operational errors directly through the same conversational interface.
+
+Example:
+
+> Show recent Lambda errors
+
+AWS Lambda identifies the request as a log-related query and uses Amazon CloudWatch Logs Insights to retrieve recent error-related entries. The results are formatted and presented as an operational log summary.
+
+This enables users to access both enterprise knowledge and recent operational information through a single interface.
 
 ---
 
@@ -113,6 +127,17 @@ The assistant retrieves relevant enterprise documents and generates grounded res
 
 ![AI Response](images/ai-response.png)
 
+## Operational Log Monitoring
+
+Users can request recent AWS Lambda errors directly through the conversational interface.
+
+Example:
+
+> Show recent Lambda errors
+
+The application queries Amazon CloudWatch Logs Insights and presents matching error-related entries as an operational log summary.
+
+![Operational Log Monitoring](images/operational-log-monitoring.png)
 ---
 
 # Enterprise Value
@@ -143,6 +168,7 @@ Key business outcomes include:
 - Amazon Nova Lite
 - Amazon S3
 - IAM
+- Amazon CloudWatch Logs/Insights
 
 ## AI & Architecture
 
@@ -156,11 +182,14 @@ Key business outcomes include:
 
 ---
 
-## Future Enhancement
+## Future Enhancements
 
-- AI-assisted log analysis using Amazon CloudWatch Logs
-- Natural language querying of API errors, audit logs, and monitoring events
-- Log summarization using Amazon Bedrock
+- AI-powered summarization and root cause analysis of operational logs
+- Support for multiple CloudWatch log groups
+- API Gateway, application, and audit log analysis
+- Correlation between operational logs and enterprise knowledge
+- Conversation memory and chat history
+- Automated remediation recommendations
 
 ---
 
