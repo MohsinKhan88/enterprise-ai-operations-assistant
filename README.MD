@@ -1,16 +1,18 @@
 # Enterprise AI Operations Assistant on AWS
 
-AI-powered operational support using Retrieval-Augmented Generation (RAG) and Amazon Bedrock to transform enterprise documentation into an intelligent knowledge assistant.
+AI-powered operational support using Retrieval-Augmented Generation (RAG), Amazon Bedrock, and Amazon CloudWatch to provide intelligent access to enterprise knowledge and operational logs.
 
 ---
 
 # Overview
 
-Enterprise support teams often spend significant time searching across runbooks, incident records, operational documentation, and knowledge repositories before identifying the root cause of an issue.
+Enterprise support teams often spend significant time searching across runbooks, incident records, operational documentation, monitoring platforms, and application logs before identifying the root cause of an issue.
 
-The Enterprise AI Operations Assistant demonstrates how Generative AI and Retrieval-Augmented Generation (RAG) can be used to provide grounded, explainable answers using trusted enterprise knowledge.
+The Enterprise AI Operations Assistant demonstrates how Generative AI, Retrieval-Augmented Generation (RAG), and cloud-native operational data can be brought together through a conversational interface to support enterprise operations and troubleshooting.
 
-Built entirely on managed AWS services, the solution showcases how enterprise knowledge can be transformed into an intelligent operational assistant without training or fine-tuning a custom Large Language Model.
+The solution uses Amazon Bedrock Knowledge Bases to provide grounded answers from trusted enterprise documentation and Amazon CloudWatch Logs Insights to retrieve recent operational errors.
+
+Built using managed AWS services, the project demonstrates a practical approach to combining enterprise knowledge with operational visibility without training or fine-tuning a custom Large Language Model.
 
 ---
 
@@ -24,20 +26,26 @@ https://main.d2zuwqwp922u1r.amplifyapp.com
 
 ---
 
-# AWS Implementation
+# Current Version
 
-| Service | Purpose |
-|----------|---------|
-| AWS Amplify | Hosts the React web application |
-| Amazon API Gateway | Exposes REST API endpoints |
-| AWS Lambda | Serverless backend orchestration |
-| Amazon Bedrock Knowledge Bases | Managed Retrieval-Augmented Generation (RAG) |
-| Amazon Titan Embeddings | Semantic document search |
-| Amazon Nova Lite | Generates grounded AI responses |
-| Amazon S3 | Stores enterprise documentation |
-| IAM | Identity and access management |
+**Version 1.1.0**
 
-Users can ask operational questions in natural language and receive AI-generated responses grounded in enterprise documentation, including references to the retrieved source documents.
+Version 1.1 extends the Enterprise AI Operations Assistant with operational log monitoring capabilities using Amazon CloudWatch Logs Insights.
+
+The assistant currently supports two types of operational queries:
+
+- Enterprise knowledge questions using Amazon Bedrock Knowledge Bases
+- Recent AWS Lambda error queries using Amazon CloudWatch Logs Insights
+
+Example questions:
+
+> What is the P1 incident process?
+
+> How do I troubleshoot a 503 Service Unavailable error?
+
+> Show recent Lambda errors
+
+This demonstrates how a single operational assistant can provide access to both enterprise knowledge and recent operational data.
 
 ---
 
@@ -52,9 +60,9 @@ Production support engineers often investigate issues by searching across multip
 - Knowledge Articles
 - Internal Documentation
 
-This fragmented approach increases Mean Time to Resolution (MTTR), creates heavy dependency on Subject Matter Experts (SMEs), and results in inconsistent troubleshooting processes.
+This fragmented approach increases Mean Time to Resolution (MTTR), creates dependency on Subject Matter Experts (SMEs), and results in inconsistent troubleshooting processes.
 
-The Enterprise AI Operations Assistant addresses this challenge by providing a single conversational interface that retrieves trusted enterprise knowledge and generates grounded, explainable responses using Retrieval-Augmented Generation (RAG).
+The Enterprise AI Operations Assistant addresses this challenge by providing a centralized conversational interface for accessing operational knowledge and recent system errors.
 
 The following diagram illustrates the enterprise knowledge fragmentation problem.
 
@@ -64,106 +72,87 @@ The following diagram illustrates the enterprise knowledge fragmentation problem
 
 # Solution
 
-The Enterprise AI Operations Assistant provides a centralized conversational interface that enables users to ask operational questions using natural language.
+The Enterprise AI Operations Assistant provides a conversational interface that allows users to ask operational questions using natural language.
 
-Example:
+The application supports two primary request paths.
 
-> Why is the application responding slowly today?
+## Enterprise Knowledge
 
-Amazon Bedrock Knowledge Bases retrieves the most relevant enterprise documentation using semantic search powered by Amazon Titan Embeddings.
+For questions related to operational procedures, incidents, troubleshooting guides, and enterprise documentation:
 
-Amazon Nova Lite generates responses using the retrieved enterprise context, ensuring answers are grounded in trusted documentation rather than relying solely on the model's pre-trained knowledge.
+1. Amazon Bedrock Knowledge Bases retrieves relevant enterprise documents.
+2. Amazon Titan Embeddings enables semantic document retrieval.
+3. Amazon Nova Lite generates a grounded response using the retrieved context.
+4. References to the relevant source documents are returned with the response.
 
-Responses include:
+## Operational Logs
 
-- Probable Root Cause
-- Supporting Evidence
-- Recommended Actions
-- References to Retrieved Source Documents
+For supported log-related questions:
+
+1. AWS Lambda identifies the request as an operational log query.
+2. Amazon CloudWatch Logs Insights searches the configured Lambda log group.
+3. Relevant recent error entries are retrieved.
+4. The results are formatted into an operational log summary.
+5. The response is displayed through the same conversational interface.
+
+This approach avoids sending large volumes of raw logs to a Large Language Model and retrieves only the operational information relevant to the supported query.
+
+---
+
+# AWS Implementation
+
+| Service | Purpose |
+|----------|---------|
+| AWS Amplify | Hosts the React web application |
+| Amazon API Gateway | Exposes the backend REST API |
+| AWS Lambda | Handles request routing and backend orchestration |
+| Amazon Bedrock Knowledge Bases | Provides managed Retrieval-Augmented Generation (RAG) |
+| Amazon Titan Embeddings | Enables semantic document retrieval |
+| Amazon Nova Lite | Generates grounded responses from retrieved enterprise knowledge |
+| Amazon S3 | Stores enterprise documentation |
+| Amazon CloudWatch Logs | Stores application and Lambda operational logs |
+| Amazon CloudWatch Logs Insights | Queries recent operational error logs |
+| IAM | Controls access between AWS services |
 
 ---
 
 # Solution Architecture
 
-The solution was first designed as a conceptual Retrieval-Augmented Generation (RAG) workflow and then implemented using fully managed AWS services.
+The solution was first designed as a conceptual Retrieval-Augmented Generation (RAG) workflow and then implemented using managed AWS services.
 
 ## Conceptual RAG Architecture
 
-The following diagram illustrates the conceptual RAG workflow.
+The following diagram illustrates the conceptual enterprise RAG workflow.
 
 ![Conceptual RAG Architecture](images/enterprise-ai-operations-assistant.png)
 
 ## AWS Implementation Architecture
 
-The following diagram shows how the solution is implemented using AWS managed services.
+The following diagram shows the cloud-native AWS implementation.
 
 ![AWS Implementation Architecture](images/architecture-aws-implementation.png)
 
 ---
 
-# Application
+# Request Flow
 
-## Home Page
+The React application provides a single conversational interface for enterprise knowledge and operational log queries.
 
-![Home Page](images/home-page.png)
+### Knowledge-Based Request
 
-## Sample AI Response
-
-The assistant retrieves relevant enterprise documents and generates grounded responses with references to the retrieved source documents.
-
-![AI Response](images/ai-response.png)
-
----
-
-# Enterprise Value
-
-This project demonstrates how Retrieval-Augmented Generation (RAG) and managed AWS AI services can be applied to enterprise operational support.
-
-Key business outcomes include:
-
-- Reduced Mean Time to Resolution (MTTR)
-- Reduced dependency on Subject Matter Experts (SMEs)
-- Faster knowledge discovery
-- Improved operational efficiency
-- Consistent troubleshooting guidance
-- Scalable enterprise knowledge management
-
----
-
-# Technologies
-
-## AWS Services
-
-- AWS Amplify
-- Amazon API Gateway
-- AWS Lambda
-- Amazon Bedrock
-- Amazon Bedrock Knowledge Bases
-- Amazon Titan Embeddings
-- Amazon Nova Lite
-- Amazon S3
-- IAM
-
-## AI & Architecture
-
-- Retrieval-Augmented Generation (RAG)
-- Semantic Search
-- Large Language Models (LLMs)
-- Embedding Models
-- Serverless Architecture
-- Enterprise AI Solution Design
-- Knowledge Management
-
----
-
-## Future Enhancement
-
-- AI-assisted log analysis using Amazon CloudWatch Logs
-- Natural language querying of API errors, audit logs, and monitoring events
-- Log summarization using Amazon Bedrock
-
----
-
-# License
-
-This project is provided for educational and portfolio purposes.
+```text
+User
+  ↓
+React Application
+  ↓
+Amazon API Gateway
+  ↓
+AWS Lambda
+  ↓
+Amazon Bedrock Knowledge Bases
+  ↓
+Semantic Retrieval
+  ↓
+Amazon Nova Lite
+  ↓
+Grounded Response
