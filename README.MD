@@ -87,8 +87,7 @@ The assistant also provides access to recent operational logs.
 
 Users can ask questions such as:
 
-> Show recent Lambda errors
-
+> Show recent Lambda errors.
 AWS Lambda identifies operational log requests and queries Amazon CloudWatch Logs Insights to retrieve recent error-related entries. The results are presented directly through the conversational interface as an operational log summary.
 ---
 
