@@ -74,7 +74,7 @@ Amazon Bedrock Knowledge Bases retrieves the most relevant enterprise documentat
 
 Amazon Nova Lite generates responses using the retrieved enterprise context, ensuring answers are grounded in trusted documentation rather than relying solely on the model's pre-trained knowledge.
 
-Response include:
+Responses include:
 
 - Probable Root Cause
 - Supporting Evidence
